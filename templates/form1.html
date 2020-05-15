@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Audio Recording</title>
+</head>
+<body>
+   <h2>Audio recording Using Python</h2>
+  <form action="{% url 'save' %}" method="post">
+      {% csrf_token %}
+
+      <input type="text" placeholder="Name" id="name" name="name">
+      <input type="text" placeholder="Movie Name" id="mname" name="mname">
+      <input type="text" placeholder="song No" id="sn" name="sn">
+      <table>
+          <tr>
+              <td>
+                  <h2>Song Recording</h2>
+
+              </td>
+          </tr>
+          <tr>
+              <td>
+              {% block content %}
+                  <a href="{% url 'start' %}"><button type="button"> Start </button></a>
+                  <a href="{% url 'stop' %}"><button type="button"> Stop </button></a>
+              {% endblock %}
+
+      {% if d %}
+          <h2 >{{ d}}</h2>
+          <audio id="s1" controls  >
+            <source onclick="s1" src="{% static "audio/"  %}{{ d }}">
+        </audio>
+      {% endif %}
+              </td>
+          </tr>
+      </table>
+
+      <button type="submit">Save</button>
+  </form>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'start' %}"><button type="button"> Start </button></a>
+       <a href="{% url 'stop' %}"><button type="button"> Stop </button></a>
+      {% if daa %}
+         <h2 >{{ daa }}</h2>
+
+
+      {% elif d %}
+          <h2 >{{ d}}</h2>
+          <audio id="s1" controls  >
+            <source onclick="s1" src="{% static "audio/"  %}{{ d }}">
+        </audio>
+          <script>
+        function f1()
+        {
+            var obj =document.getElementById("s1");
+            obj.play();
+        }
+        </script>
+      {% endif %}
+
+</body>
+</html>
